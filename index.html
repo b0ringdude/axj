@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:'DM Sans',sans-serif;
+  background:#0d0d1a;
+  overflow:hidden;
+  color:white;
+}
+
+/* ✨ ESTRELLAS */
+.stars{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:transparent;
+  overflow:hidden;
+  z-index:0;
+}
+
+.star{
+  position:absolute;
+  width:2px;
+  height:2px;
+  background:white;
+  opacity:0.7;
+  animation:twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle{
+  from{opacity:0.2;}
+  to{opacity:1;}
+}
+
+/* CONTENEDOR */
+.wrapper{
+  position:relative;
+  z-index:2;
+}
+
+/* LOGIN */
+.login-box{
+  width:720px;
+  padding:40px;
+  border-radius:20px;
+  background:rgba(0,0,0,0.65);
+  backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,0.12);
+  display:flex;
+  justify-content:space-between;
+  gap:40px;
+  position:relative;
+  z-index:2;
+}
+
+.logo{font-size:22px;font-weight:600;margin-bottom:20px;}
+.title{font-size:32px;font-weight:600;margin-bottom:10px;}
+.subtitle{font-size:14px;color:rgba(255,255,255,0.6);}
+
+.login-right{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  width:100%;
+}
+
+.input{
+  padding:14px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,0.2);
+  background:transparent;
+  color:white;
+  outline:none;
+}
+
+.bottom{
+  margin-top:20px;
+  display:flex;
+  justify-content:flex-end;
+}
+
+.btn{
+  background:#1d9bf0;
+  border:none;
+  padding:10px 22px;
+  border-radius:20px;
+  color:white;
+  cursor:pointer;
+}
+
+.error{
+  font-size:12px;
+  color:#ff6b6b;
+  display:none;
+}
+
+/* 🪐 ÓRBITA */
+.orbit{
+  position:absolute;
+  width:800px;
+  height:400px;
+  border:1px dashed rgba(255,255,255,0.15);
+  border-radius:50%;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  z-index:1;
+}
+
+/* PLANETAS */
+.orbiting{
+  position:absolute;
+  width:800px;
+  height:400px;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  animation:rotate 20s linear infinite;
+}
+
+.planet{
+  position:absolute;
+  width:10px;
+  height:10px;
+  background:#ffb6c1;
+  border-radius:50%;
+  box-shadow:0 0 12px rgba(255,182,193,0.8);
+}
+
+.p1{top:-5px; left:50%;}
+.p2{bottom:-5px; left:50%;}
+
+@keyframes rotate{
+  from{transform:translate(-50%,-50%) rotate(0deg);}
+  to{transform:translate(-50%,-50%) rotate(360deg);}
+}
+
+/* 🔥 IMÁGENES */
+.corner{
+  position:fixed;
+  width:45px;
+  opacity:0.6;
+  animation:vibe 2s infinite ease-in-out;
+  transition:0.3s;
+  z-index:10;
+}
+
+.corner img{
+  width:100%;
+  border-radius:8px;
+}
+
+.corner:hover{
+  opacity:1;
+  transform:scale(1.1);
+}
+
+/* POSICIONES */
+.bottom-right{bottom:15px; right:20px;}
+.bottom-left{bottom:15px; left:20px;}
+.top-right{top:15px; right:20px;}
+.top-left{top:15px; left:20px;}
+
+/* TOOLTIP */
+.corner::after{
+  position:absolute;
+  background:rgba(0,0,0,0.8);
+  border:1px solid rgba(255,255,255,0.2);
+  padding:8px 12px;
+  border-radius:8px;
+  font-size:12px;
+  color:white;
+  white-space:nowrap;
+  opacity:0;
+  transition:0.3s;
+}
+
+.corner:hover::after{opacity:1;}
+
+.bottom-right::after{bottom:120%; right:0;}
+.bottom-left::after{left:120%; bottom:0;}
+.top-right::after{right:120%; top:0;}
+.top-left::after{left:120%; top:0;}
+
+.manos:hover::after{content:"usuario: tetas | contraseña: culo 💖";}
+.lego:hover::after{content:"segundo lego que hicimos jeje 🧱";}
+.bicep:hover::after{content:"wow que biceps 💪";}
+.honest:hover::after{content:"que rico honest greens 🥤";}
+
+/* vibración */
+@keyframes vibe{
+  0%{transform:translate(0,0)}
+  50%{transform:translate(0.5px,-0.5px)}
+  100%{transform:translate(0,0)}
+}
+
+/* 📱 RESPONSIVE */
+@media (max-width:768px){
+  .login-box{
+    width:90%;
+    flex-direction:column;
+    padding:25px;
+  }
+
+  .orbit, .orbiting{
+    width:120%;
+    height:120%;
+  }
+
+  .title{font-size:24px;}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ✨ estrellas -->
+<div class="stars" id="stars"></div>
+
+<div class="wrapper">
+  <!-- planetas orbitando -->
+  <div class="orbiting">
+    <div class="planet p1"></div>
+    <div class="planet p2"></div>
+  </div>
+
+  <!-- login -->
+  <div class="login-box">
+    <div>
+      <div class="logo">:D</div>
+      <div class="title">Inicia sesión culona</div>
+      <div class="subtitle">en algún lugar de la página está lo que necesitas jeje</div>
+    </div>
+
+    <div class="login-right">
+      <input id="user" class="input" placeholder="Usuario">
+      <input id="pass" type="password" class="input" placeholder="Contraseña">
+      <div class="error" id="error">usuario o contraseña incorrectos </div>
+
+      <div class="bottom">
+        <button class="btn" onclick="login()">Siguiente</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- imágenes -->
+<div class="corner bottom-right manos"><img src="manos.jpeg"></div>
+<div class="corner bottom-left lego"><img src="lego.jpeg"></div>
+<div class="corner top-right bicep"><img src="bicep.jpeg"></div>
+<div class="corner top-left honest"><img src="honest.jpeg"></div>
+
+<script>
+function login(){
+  const user = document.getElementById('user').value.toLowerCase();
+  const pass = document.getElementById('pass').value.toLowerCase();
+  const error = document.getElementById('error');
+
+  if(user === "tetas" && pass === "culo"){
+    window.location.href = "index.html";
+  } else {
+    error.style.display = "block";
+  }
+}
+
+/* ENTER */
+document.addEventListener('keydown', function(e){
+  if(e.key === "Enter"){
+    login();
+  }
+});
+
+/* ✨ GENERAR ESTRELLAS */
+const starsContainer = document.getElementById('stars');
+
+for(let i=0;i<120;i++){
+  const star = document.createElement('div');
+  star.className = 'star';
+  star.style.top = Math.random()*100 + '%';
+  star.style.left = Math.random()*100 + '%';
+  star.style.animationDuration = (2 + Math.random()*3) + 's';
+  starsContainer.appendChild(star);
+}
+</script>
+
+</body>
+</html>
